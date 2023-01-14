@@ -1,32 +1,29 @@
 
-## Dynamic Array Implementation MIPS
-MIPS assembly instructions where you can create a simple song list. You should use dynamic arrays and implement given methods properly. The user of the program should be able to: 
+# Dynamic Array Implementation MIPS
+A MIPS building guide that allows you to create a simple list of songs. You must use dynamic arrays and implement the specified methods correctly. Program users should be able to:
 
-• add a song to the list by providing its name and duration 
 
-• delete a song from the list by providing its name 
+• Add songs to the list by specifying name and length
 
-• list all songs 
+• Remove a song from the list by typing its name
 
-Your implementation should satisfy these constraints below: 
+• List all songs
 
-• You should use 12 bytes dynamic memory space as a dynamic array for storing songs. First 4 bytes are for capacity of the dynamic array, second 4 bytes are for size of the dynamic array, last 4 bytes are for address of the elements. 
+Implementations must satisfy the following constraints:
 
-• For each song you should allocate 8 bytes space where first 4 bytes are address of the song name (name itself will be 64 bytes) and last 4 bytes are for duration of the song. 
+• 12 bytes of dynamic memory should be used as a dynamic array to store the songs. The first 4 bytes are the dynamic array capacity, the next 4 bytes are the dynamic array size, and the last 4 bytes are the element address.
 
-• In the subroutine initDynamicArray, you should create an array with size of 2 and store the address in the dynamic array’s address of the elements part. 
+• 8 bytes of memory must be allocated for each song. The first 4 bytes are the address of the song name (the name itself is 64 bytes) and the last 4 bytes are the length of the song. • In the initDynamicArray subroutine, you must create an array of size 2 and store the address in the address of the element part of the dynamic array.
 
-• When the user chooses to add a new song, you should create that song in the heap by using syscall with the sbrk code 9 in createSong subroutine. You should put this song address into the songs by using the putElement subroutine. In the putElement subroutine, you should increase the size of the elements array and put the newly added element’s address into the elements array. 
+• If the user decides to add a new song, it should be created on the heap using the syscall with sbrk code 9 in the createSong subroutine. We need to insert the address of this song into the song using the putElement subroutine. The putElement subroutine should increase the size of the element array and put the address of the newly added element into the element array.
 
-• When the user chooses to delete the song, you should find it by using findSong subroutine where you should take the name of the song from the user and use removeElement to remove its address from the songs. In the findSong subroutine you should call another subroutine called compareString to check the name of the songs. 
+• If the user wants to remove a song, you should use the findSong subroutine to find the song, get the name of the song from the user, and remove its address from the song using removeElement. The findSong subroutine should call another subroutine called CompareString to check the name of the song.
 
-• If an element is removed from the dynamic array, other elements that follow the deleted element should be shifted to the previous empty space (in a dynamic array with 5 elements, if the 3rd element is removed, 4th and 5th elements should be shifted to the 3rd and 4th positions). 
+• If an element is removed from a dynamic array, any other elements following the removed element must be moved to the previous free space (in a 5-element dynamic array, the 3rd element is , the 4th and 5th items are moved to the following locations). squares 3 and 4).
 
-• Whenever the size of the dynamic array reaches capacity, you should increase the capacity to 2 times the old one and copy the elements of the elements array into the new allocated elements array. You should assign the value zero as an address for array elements that haven’t pointed to any valid song yet. All these operations should be implemented in the putElement subroutine. 
+• Whenever the size of the dynamic array reaches its capacity, the capacity must be doubled from the old one and the elements of the elemental array must be copied to the newly allocated elemental array. Array elements that do not already point to a valid song should be assigned the value zero as their address. All these operations should be implemented in the putElement subroutine. • If the dynamic array size decreases to capacity/2 - 1, reduce the capacity by a factor of 2 and allocate space for that capacity. Copies the values of an element array to a newly allocated element array, unless the size is 2. All these operations should be implemented in the removeElement subroutine.
 
-• Whenever the size of the dynamic array drops down to capacity/2 - 1, reduce capacity by factor of 2 and allocate space for that capacity unless the size is 2, copy the values of the elements array to the newly allocated elements array. All these operations should be implemented in the removeElement subroutine. 
-
-• While you list the songs you should use the listElements subroutine to list the songs. In the listElement subroutine. In this subroutine you should call another subroutine called printElement. You should use printElement subroutine as a transition where you call printSong subroutine. 
+• When listing songs, you must use the listElements subroutine to list the songs. In the listElement subroutine. This subroutine should call another subroutine called printElement. The printElement subroutine should be used as a transition to call the printSong subroutine.
 
 
 
